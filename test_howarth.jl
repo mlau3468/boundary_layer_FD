@@ -107,7 +107,7 @@ for i = 1:nx
     ys[i,:] .= eta/sqrt(ue[i]/(nu*xs[i]))
 end
 
-uvel, tws, f, f1, f2 = bl_kbox(xs, eta, ue, nu)
+uvel, tws, f, f1, f2 = bl_kbox(xs, eta, ue, nu, mu)
 Cf = sum(tws[2:end].*dx)/(0.5*rho*uinf^2*L)
 println("Cf=$Cf")
 
@@ -126,7 +126,7 @@ p3 = plot!(p3, xs, cfs, label="Kbox")
 # Plotting
 
 # Data from Schetz
-howarthdata = readdlm("Howarth Data.csv",',')
+howarthdata = readdlm("test_howarth_data.csv",',')
 p = plot!(p,howarthdata[:,1], howarthdata[:,2],label="Schetz Pg. 111")
 
 p = plot!(p, xlims=(0,1), ylims=(0,0.06))
